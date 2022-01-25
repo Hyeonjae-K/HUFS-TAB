@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from tab.models import Contents
+
+admin.site.register(Contents)

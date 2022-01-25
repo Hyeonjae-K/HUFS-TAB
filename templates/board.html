@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">제목</th>
+      <th scope="col">작성일</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for content in contents %}
+    <tr>
+      <th scope="row">{{ content.id }}</th>
+      <td><a href="{% url 'tab:board_detail' content.id %}">{{ content.subject }}</a></td>
+      <td>{{ content.create_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a>
+{% endblock %}

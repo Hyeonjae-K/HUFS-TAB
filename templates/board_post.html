@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3 row">
+    <label for="subject" class="col-sm-2 col-form-label">제목</label>
+    <div class="col-sm-10">
+      <input type="text" maxlength="16" class="form-control" id="subject" value="{{ content.subject }}" name="subject">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">내용</label>
+    <textarea class="form-control" id="content" rows="5" name="content">{{ content.content }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">작성하기</button>
+</form>
+{% endblock %}

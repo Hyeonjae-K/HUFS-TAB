@@ -1,24 +1,33 @@
+import requests
+
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 from tab.models import Contents
 from forms import ContentsForm, ApplicationsForm
+from config import secret
+
+
+def _get_image():
+    return requests.get('https://api.unsplash.com/photos/random?query=computer&client_id=%s' %
+                        secret.UNSPLASH_ACCESS_KEY).json()['urls']['full']
 
 
 def index(request):
-    return render(request, 'tab/index.html')
+    context = {'bg_img': _get_image()}
+    return render(request, 'tab/index.html', context)
 
 
 def board(request):
     contents = Contents.objects.order_by('-create_date')
-    context = {'contents': contents}
+    context = {'contents': contents, 'bg_img': _get_image()}
     return render(request, 'tab/board.html', context)
 
 
 def board_detail(request, content_id):
     content = get_object_or_404(Contents, pk=content_id)
-    context = {'content': content}
+    context = {'content': content, 'bg_img': _get_image()}
     return render(request, 'tab/board_detail.html', context)
 
 
@@ -33,7 +42,7 @@ def board_post(request):
             return redirect('tab:board')
     else:
         form = ContentsForm()
-    context = {'form': form}
+    context = {'form': form, 'bg_img': _get_image()}
     return render(request, 'tab/board_post.html', context)
 
 
@@ -47,7 +56,7 @@ def board_modify(request, content_id):
             return redirect('tab:board')
     else:
         form = ContentsForm(instance=content)
-    context = {'content': content}
+    context = {'content': content, 'bg_img': _get_image()}
     return render(request, 'tab/board_post.html', context)
 
 
@@ -66,9 +75,9 @@ def recruiting(request):
             application.create_date = timezone.now()
             application.save()
             context = {'name': application.name,
-                       'phonenumber': application.phonenumber}
+                       'phonenumber': application.phonenumber, 'bg_img': _get_image()}
             return render(request, 'tab/recruiting_success.html', context)
     else:
         form = ApplicationsForm()
-    context = {'form': form}
+    context = {'form': form, 'bg_img': _get_image()}
     return render(request, 'tab/recruiting.html', context)

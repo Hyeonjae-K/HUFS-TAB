@@ -33,8 +33,11 @@
       {% endfor %}
       <!-- Pager-->
       <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+      <!-- Write -->
+      {% if user.is_authenticated %}
+      <div class="d-flex justify-content-end mb-4"><a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a></div>
+      {% endif %}
     </div>
   </div>
 </div>
-<!-- <a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a> -->
 {% endblock %}

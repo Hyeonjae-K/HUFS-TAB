@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 from tab.models import Contents
@@ -21,6 +22,7 @@ def board_detail(request, content_id):
     return render(request, 'board_detail.html', context)
 
 
+@login_required(login_url='tab:login')
 def board_post(request):
     if request.method == 'POST':
         form = ContentsForm(request.POST)
@@ -35,6 +37,7 @@ def board_post(request):
     return render(request, 'board_post.html', context)
 
 
+@login_required(login_url='tab:login')
 def board_modify(request, content_id):
     content = get_object_or_404(Contents, pk=content_id)
     if request.method == 'POST':
@@ -48,6 +51,7 @@ def board_modify(request, content_id):
     return render(request, 'board_post.html', context)
 
 
+@login_required(login_url='tab:login')
 def board_delete(request, content_id):
     content = get_object_or_404(Contents, pk=content_id)
     content.delete()

@@ -11,6 +11,9 @@
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:index' %}">소개</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:board' %}">게시판</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:recruiting' %}">지원하기</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:logout' %}">로그아웃</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

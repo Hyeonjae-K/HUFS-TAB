@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load tab_filter %}
 {% block content %}
 <!-- Page Header-->
 <header class="masthead" style="background-image: url({% static 'assets/img/post-bg.jpg' %})">
@@ -16,12 +17,12 @@
     </div>
   </div>
 </header>
-<!-- Post Content-->
+<!-- Main Content-->
 <article class="mb-4">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <p class="text-break">{{ content.content }}</p>
+      <div class="col-md-10 col-lg-8 col-xl-7 text-break">
+        {{ content.content|mark }}
       </div>
     </div>
     {% if user.is_authenticated %}

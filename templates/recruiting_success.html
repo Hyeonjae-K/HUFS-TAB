@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card my-3">
+  <div class="card-header text-center">
+    <h2>{{ name }}님, TAB에 지원해 주셔서 감사합니다:)</h2>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">제출 결과</h5>
+    <p class="card-text">
+      <ul>
+        <li>성공적으로 제출되었습니다. TAB 학회원 분들이 서류를 검토중입니다.</li>
+        <li>합/불 결과에 관계없이 <strong>{{ phonenumber }}</strong>로 연락드리겠습니다.</li>
+      </ul>
+    </p>
+    <h5 class="card-title">참고해주세요.</h5>
+    <p class="card-text">
+      <ul>
+        <li>가입 절차는 '서류지원 -> 화상면접 -> 최종합격'의 순서입니다.</li>
+        <li>이외 궁금한 점은 example@domain.com으로 문의 바랍니다.</li>
+      </ul>
+    </p>
+  </div>
+  <div class="card-footer text-muted">
+    감사합니다.
+  </div>
+</div>
+{% endblock %}

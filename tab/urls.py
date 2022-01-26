@@ -13,4 +13,5 @@ urlpatterns = [
          views.board_modify, name='board_modify'),
     path('board/delete/<int:content_id>',
          views.board_delete, name='board_delete'),
+    path('recruiting/', views.recruiting, name='recruiting'),
 ]

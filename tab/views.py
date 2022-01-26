@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
 from tab.models import Contents
-from forms import ContentsForm
+from forms import ContentsForm, ApplicationsForm
 
 
 def board(request):
@@ -48,3 +48,19 @@ def board_delete(request, content_id):
     content = get_object_or_404(Contents, pk=content_id)
     content.delete()
     return redirect('tab:board')
+
+
+def recruiting(request):
+    if request.method == 'POST':
+        form = ApplicationsForm(request.POST, request.FILES)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.create_date = timezone.now()
+            application.save()
+            context = {'name': application.name,
+                       'phonenumber': application.phonenumber}
+            return render(request, 'recruiting_success.html', context)
+    else:
+        form = ApplicationsForm()
+    context = {'form': form}
+    return render(request, 'recruiting.html', context)

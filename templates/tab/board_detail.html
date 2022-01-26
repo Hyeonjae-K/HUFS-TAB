@@ -2,21 +2,7 @@
 {% load static %}
 {% load tab_filter %}
 {% block content %}
-<!-- Page Header-->
-<header class="masthead" style="background-image: url({% static 'assets/img/post-bg.jpg' %})">
-  <div class="container position-relative px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="post-heading">
-          <h1>{{ content.subject }}</h1>
-          <span class="meta">
-            {{ content.create_date|date:"Y m d"}}
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+{% include "header.html" with bg_img=bg_img title=content.subject subtitle=content.create_date|date:"Y m d" %}
 <!-- Main Content-->
 <article class="mb-4">
   <div class="container px-4 px-lg-5">

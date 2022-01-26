@@ -1,10 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2>{{ content.subject }}</h2>
-
-<p class="text-break">{{ content.content }}</p>
-
-<small>{{ content.create_date }}</small>
-<a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_modify' content.id %}">수정</a>
-<a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_delete' content.id %}">삭제</a>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url({% static 'assets/img/post-bg.jpg' %})">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>{{ content.subject }}</h1>
+          <span class="meta">
+            {{ content.create_date|date:"Y m d"}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <p class="text-break">{{ content.content }}</p>
+      </div>
+    </div>
+    <a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_modify' content.id %}">수정</a>
+    <a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_delete' content.id %}">삭제</a>
+  </div>
+</article>
 {% endblock %}

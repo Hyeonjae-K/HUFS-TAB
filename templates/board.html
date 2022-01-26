@@ -1,23 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성일</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for content in contents %}
-    <tr>
-      <th scope="row">{{ content.id }}</th>
-      <td><a href="{% url 'tab:board_detail' content.id %}">{{ content.subject }}</a></td>
-      <td>{{ content.create_date }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url({% static 'assets/img/home-bg.jpg' %})">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>TAB 게시판</h1>
+          <span class="subheading">한 줄 소개</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      {% for content in contents %}
+      <!-- Post preview-->
+      <div class="post-preview">
+        <a href="{% url 'tab:board_detail' content.id %}">
+          <h2 class="post-title">{{ content.subject }}</h2>
+        </a>
+        <p class="post-meta">
+          {{ content.create_date|date:"Y m d" }}
+        </p>
+      </div>
+      <!-- Divider-->
+      <hr class="my-4" />
+      {% endfor %}
+      <!-- Pager-->
+      <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+    </div>
+  </div>
+</div>
+<!-- <a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a> -->
 {% endblock %}

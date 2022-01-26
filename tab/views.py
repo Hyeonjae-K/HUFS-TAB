@@ -5,6 +5,10 @@ from tab.models import Contents
 from forms import ContentsForm, ApplicationsForm
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def board(request):
     contents = Contents.objects.order_by('-create_date')
     context = {'contents': contents}

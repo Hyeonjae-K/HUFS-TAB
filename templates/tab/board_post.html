@@ -10,6 +10,7 @@
         <div class="my-5">
           <form method="post">
             {% csrf_token %}
+            {% include "form_errors.html" %}
             <div class="form-floating">
               <input class="form-control" id="subject" type="text" placeholder="제목" maxlength="16" value="{{ content.subject }}" name="subject" />
               <label for="subject">제목</label>

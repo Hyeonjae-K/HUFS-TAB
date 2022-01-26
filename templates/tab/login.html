@@ -10,6 +10,7 @@
         <div class="my-5">
           <form method="post">
             {% csrf_token %}
+            {% include "form_errors.html" %}
             <div class="form-floating">
               <input class="form-control" id="username" type="text" placeholder="ID" name="username" />
               <label for="username">ID</label>

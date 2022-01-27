@@ -26,20 +26,20 @@
             {% csrf_token %}
             {% include "form_errors.html" %}
             <div class="form-floating">
-              <input class="form-control" id="name" type="text" placeholder="이름" maxlength="8" name="name" />
+              <input class="form-control" id="name" type="text" placeholder="이름" maxlength="8" name="name" value="{{ form.name.value|default_if_none:'' }}" />
               <label for="name">이름</label>
             </div>
             <div class="form-floating">
-              <input class="form-control" id="studentnumber" type="text" placeholder="학번" maxlength="16" name="studentnumber" />
+              <input class="form-control" id="studentnumber" type="text" placeholder="학번" maxlength="16" name="studentnumber" value="{{ form.studentnumber.value|default_if_none:'' }}" />
               <label for="studentnumber">학번</label>
             </div>
             <div class="form-floating">
-              <input class="form-control" id="phonenumber" type="tel" placeholder="전화번호" pattern="[0-9]{11}" name="phonenumber" />
+              <input class="form-control" id="phonenumber" type="tel" placeholder="전화번호" pattern="[0-9]{11}" name="phonenumber" value="{{ form.phonenumber.value|default_if_none:'' }}" />
               <label for="phonenumber">전화번호</label>
             </div>
             <div class="mt-3">
               <label for="application" class="form-label">지원서 첨부 (최대 2.5MB)</label>
-              <input class="form-control" type="file" id="application" name="path" accept=".pdf,.doc,.docx,.txt">
+              <input class="form-control" type="file" id="application" name="path" accept=".pdf,.doc,.docx,.txt" />
             </div>
             <br />
             <!-- Submit Button-->

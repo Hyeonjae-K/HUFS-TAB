@@ -20,7 +20,14 @@
       <hr class="my-4" />
       {% endfor %}
       <!-- Pager-->
-      <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+      <div class="d-flex justify-content-end gap-2 mb-4">
+        {% if contents.has_previous %}
+        <a class="btn btn-primary" href="?page={{ contents.previous_page_number }}">이전</a>
+        {% endif %}
+        {% if contents.has_next %}
+        <a class="btn btn-primary" href="?page={{ contents.next_page_number }}">다음</a>
+        {% endif %}
+      </div>
       <!-- Write -->
       {% if user.is_authenticated %}
       <div class="d-flex justify-content-end mb-4"><a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a></div>

@@ -58,7 +58,7 @@ def board_modify(request, content_id):
             return redirect('tab:board')
     else:
         form = ContentsForm(instance=content)
-    context = {'content': content}
+    context = {'content': content, 'bg_img': _get_random_image()}
     return render(request, 'tab/board_post.html', context)
 
 

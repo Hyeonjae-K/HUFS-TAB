@@ -20,3 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tab.urls')),
 ]
+
+handler404 = 'tab.views.notfound'

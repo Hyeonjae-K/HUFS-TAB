@@ -85,3 +85,7 @@ def recruiting(request):
 
 def recruiting_success(request):
     return render(request, 'tab/recruiting_success.html')
+
+
+def notfound(request, exception):
+    return render(request, 'notfound.html')

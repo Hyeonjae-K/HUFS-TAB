@@ -15,6 +15,8 @@ urlpatterns = [
     path('board/delete/<int:content_id>',
          views.board_delete, name='board_delete'),
     path('recruiting/', views.recruiting, name='recruiting'),
+    path('recruiting/success/', views.recruiting_success,
+         name='recruiting_success'),
     path('', views.index, name='index'),
     path('login/', auth_views.LoginView.as_view(template_name='tab/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

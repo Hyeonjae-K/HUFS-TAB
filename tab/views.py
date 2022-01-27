@@ -76,10 +76,12 @@ def recruiting(request):
             application = form.save(commit=False)
             application.create_date = timezone.now()
             application.save()
-            context = {'name': application.name,
-                       'phonenumber': application.phonenumber}
-            return render(request, 'tab/recruiting_success.html', context)
+            return redirect('tab:recruiting_success')
     else:
         form = ApplicationsForm()
     context = {'form': form}
     return render(request, 'tab/recruiting.html', context)
+
+
+def recruiting_success(request):
+    return render(request, 'tab/recruiting_success.html')

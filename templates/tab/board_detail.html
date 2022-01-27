@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load tab_filter %}
 {% block content %}
-{% include "header.html" with bg_img=bg_img title=content.subject subtitle=content.create_date|date:"Y m d" %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='random/'|add:bg_img  title=content.subject subtitle=content.create_date|date:'Y m d' %}
 <!-- Main Content-->
 <article class="mb-4">
   <div class="container px-4 px-lg-5">
@@ -12,6 +12,7 @@
       </div>
     </div>
     {% if user.is_authenticated %}
+    {{ image }}
     <a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_modify' content.id %}">수정</a>
     <a type="button" class="btn btn-link btn-sm" href="{% url 'tab:board_delete' content.id %}">삭제</a>
     {% endif %}

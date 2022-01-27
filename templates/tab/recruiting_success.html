@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% include "header.html" with bg_img=bg_img title="지원완료" subtitle=name|add:"님, TAB에 지원해 주셔서 감사합니다:)" %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='recruiting_bg.jpg' title='지원완료' subtitle=name|add:'님, TAB에 지원해 주셔서 감사합니다:)' %}
 <!-- Main Content-->
 <main class="mb-4">
   <div class="container px-4 px-lg-5">
@@ -10,7 +11,7 @@
         <h5>제출 결과</h5>
         <p>
           <ul>
-            <li>성공적으로 제출되었습니다. TAB 학회원 분들이 서류를 검토중입니다.</li>
+            <li>성공적으로 제출되었습니다. TAB 학회원 분들이 서류를 확인중입니다.</li>
             <li>합/불 결과에 관계없이 <strong>{{ phonenumber }}</strong>로 결과를 알려드립니다.</li>
           </ul>
         </p>

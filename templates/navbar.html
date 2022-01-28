@@ -13,6 +13,8 @@
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:recruiting' %}">지원하기</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:logout' %}">로그아웃</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'tab:login' %}">로그인</a></li>
         {% endif %}
       </ul>
     </div>

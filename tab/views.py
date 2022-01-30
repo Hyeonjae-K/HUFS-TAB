@@ -52,7 +52,7 @@ def board_modify(request, content_id):
         form = ContentsForm(request.POST, instance=content)
         if form.is_valid():
             content = form.save()
-            return redirect('tab:board')
+            return redirect('tab:board_detail', content_id)
     else:
         form = ContentsForm(instance=content)
     context = {'form': form, 'content': content, 'bg_img': _get_random_image()}

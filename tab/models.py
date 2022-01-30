@@ -1,11 +1,12 @@
 from django.db import models
+from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
 class Contents(models.Model):
     subject = models.CharField(max_length=16)
     content = models.TextField()
-    create_date = models.DateTimeField()
+    create_date = models.DateTimeField(default=timezone.now)
 
 
 class Applications(models.Model):
@@ -20,4 +21,4 @@ class Applications(models.Model):
     phonenumber = models.CharField(max_length=11)
     path = models.FileField(upload_to='applications/%Y-%m',
                             validators=[_validate_file])
-    create_date = models.DateTimeField()
+    create_date = models.DateTimeField(default=timezone.now)

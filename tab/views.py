@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.utils import timezone
 
 from os import listdir
 from random import choice
@@ -38,9 +37,7 @@ def board_post(request):
     if request.method == 'POST':
         form = ContentsForm(request.POST)
         if form.is_valid():
-            content = form.save(commit=False)
-            content.create_date = timezone.now()
-            content.save()
+            form.save()
             return redirect('tab:board')
     else:
         form = ContentsForm()
@@ -73,9 +70,7 @@ def recruiting(request):
     if request.method == 'POST':
         form = ApplicationsForm(request.POST, request.FILES)
         if form.is_valid():
-            application = form.save(commit=False)
-            application.create_date = timezone.now()
-            application.save()
+            form.save()
             return redirect('tab:recruiting_success')
     else:
         form = ApplicationsForm()

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='recruiting_bg.jpg' title='지원완료' subtitle='TAB에 지원해 주셔서 감사합니다:)' %}
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h5>제출 결과</h5>
+        <p>
+          <ul>
+            <li>성공적으로 제출되었습니다. TAB 학회원 분들이 서류를 확인중입니다.</li>
+            <li>합/불 결과에 관계없이 기입한 전화번호로 결과를 알려드립니다.</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

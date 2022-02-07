@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='board_bg.jpg' title='게시판' subtitle='Just do it!' %}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      {% for content in contents %}
+      <!-- Post preview-->
+      <div class="post-preview">
+        <a href="{% url 'tab:board_detail' content.id %}">
+          <h2 class="post-title">{{ content.subject }}</h2>
+        </a>
+        <p class="post-meta">
+          {{ content.create_date|date:"Y m d" }}
+        </p>
+      </div>
+      <!-- Divider-->
+      <hr class="my-4" />
+      {% endfor %}
+      <!-- Pager-->
+      <div class="d-flex justify-content-end gap-2 mb-4">
+        {% if contents.has_previous %}
+        <a class="btn btn-primary" href="?page={{ contents.previous_page_number }}">이전</a>
+        {% endif %}
+        {% if contents.has_next %}
+        <a class="btn btn-primary" href="?page={{ contents.next_page_number }}">다음</a>
+        {% endif %}
+      </div>
+      <!-- Write -->
+      {% if user.is_authenticated %}
+      <div class="d-flex justify-content-end mb-4"><a type="button" class="btn btn-primary" href="{% url 'tab:board_post' %}">글쓰기</a></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

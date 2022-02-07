@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='login_bg.jpg' title='로그인' subtitle='' %}
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="my-5">
+          <form method="post">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <div class="form-floating">
+              <input class="form-control" id="username" type="text" placeholder="ID" name="username" value="{{ form.username.value|default_if_none:'' }}" />
+              <label for="username">ID</label>
+            </div>
+            <div class="form-floating">
+              <input class="form-control" id="password" type="password" placeholder="PW" name="password" />
+              <label for="password">PW</label>
+            </div>
+            <br />
+            <!-- Submit Button-->
+            <button type="submit" class="btn btn-primary">로그인</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

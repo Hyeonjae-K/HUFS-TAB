@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Header-->
+{% include 'header.html' with bg_img='index_bg.jpg' title='TAB' subtitle='Talk About Bug' %}
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <p>
+          TAB은 키보드의 Tab키와 'Talk About Bug'의 약자로 '프로그래밍 개발 지식 공유'라는 의미를 두고 있는 1982년에 설립된 컴퓨터공학부 소속 학회입니다. 함께 프로그래밍 지식에 대한 대화를 나누고, 자신이 관심있는 분야를 함께 공부하며 전공 수업 이외의 부분들을 함께 공유하여 학회원들의 실력 향상을 도모하고 있습니다. 저희는 보다 한 분야에 국한되지 않아 다양한 공부를 접할 수 있는 기회를 제공합니다. 또한, 선후배간의 친목을 도모하고, 재학생들 뿐만 아니라 졸업생들과의 네트워킹할 수 있는 다양한 활동들을 진행하고 있습니다.
+        </p>
+        <h3>스터디</h3>
+        <hr />
+        <img class="img-fluid" src="{% static 'assets/img/study.jpg' %}" />
+        <p>학회원들끼리 관심있는 주제로 서로 팀을 이뤄 공부하거나 세미나를 직접 진행합니다.<br />
+        웹, 앱(안드로이드, iOS), 게임, 머신러닝, 보안, 알고리즘 등</p>
+        <h3>발표</h3>
+        <hr />
+        <img class="img-fluid" src="{% static 'assets/img/presentation.jpg' %}" />
+        <p>개인 혹은 팀으로 진행한 프로젝트, 개인이 공부한 주제를 갖고 학기 중에 발표할 수 있는 기회를 갖습니다.</p>
+        <h3>야유회</h3>
+        <hr />
+        <img class="img-fluid" src="{% static 'assets/img/picnic.jpg' %}" />
+        <p>봄에 서울 올림픽 공원에서 졸업한 학회 선배님들과 네트워킹할 수 있는 야유회를 진행합니다.</p>
+        <h3>캠핑 및 MT</h3>
+        <hr />
+        <img class="img-fluid" src="{% static 'assets/img/retreat.jpg' %}" />
+        <p>여름과 가을 사이 MT를 진행하여 학회원들간에 친목도모 할 수 있는 시간을 갖습니다.</p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

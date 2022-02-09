@@ -1,15 +1,15 @@
 from django import forms
 
-from tab.models import Contents, Applications
+from tab.models import Post, Application
 
 
-class ContentsForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Contents
+        model = Post
         fields = ['subject', 'content']
 
 
-class ApplicationsForm(forms.ModelForm):
+class ApplicationForm(forms.ModelForm):
     class Meta:
-        model = Applications
-        fields = ['name', 'studentnumber', 'phonenumber', 'path']
+        model = Application
+        fields = ['name', 'studentnumber', 'phonenumber', 'file_path']

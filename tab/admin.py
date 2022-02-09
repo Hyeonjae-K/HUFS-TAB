@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from tab.models import Contents, Applications
+from tab.models import Post, Application
 
-admin.site.register(Contents)
-admin.site.register(Applications)
+admin.site.register(Post)
+admin.site.register(Application)

@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 class Post(models.Model):
     subject = models.CharField(max_length=16)
     content = models.TextField()
+    main_image = models.ImageField(
+        upload_to='postimages', blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -25,7 +27,8 @@ class Application(models.Model):
 
     def _set_file_path(instance, filename):
         file_format = filename.split('.')[-1]
-        return f'applications/%Y-%m/{instance.studentnumber}_{instance.name}.{file_format}'
+        datetime_str = timezone.datetime.strftime(timezone.now(), '%Y-%m')
+        return f'applications/{datetime_str}/{instance.studentnumber}_{instance.name}.{file_format}'
 
     name = models.CharField(max_length=8)
     studentnumber = models.CharField(max_length=16)

@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tab.urls')),
 ]
+
+urlpatterns += static(settings.IMAGE_ACCESS_URL,
+                      document_root=settings.IMAGE_ACCESS_ROOT)
 
 handler404 = 'tab.views.notfound'

@@ -135,6 +135,10 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+IMAGE_ACCESS_URL = 'media/postimages/'
+
+IMAGE_ACCESS_ROOT = os.path.join(BASE_DIR, 'media/postimages')
+
 
 # Redirect when login/logout
 

@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 class Post(models.Model):
     subject = models.CharField(max_length=16)
     content = models.TextField()
+    main_image = models.ImageField(
+        upload_to='postimages', blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
 
     class Meta:
